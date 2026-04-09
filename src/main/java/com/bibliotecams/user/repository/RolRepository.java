@@ -12,4 +12,5 @@ import com.bibliotecams.user.entity.RolNombre;
 public interface RolRepository extends JpaRepository<Rol, Integer> {
 
     Optional<Rol> findByNombre(RolNombre nombre);
+        
 }

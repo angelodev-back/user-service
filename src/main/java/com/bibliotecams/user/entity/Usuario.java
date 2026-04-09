@@ -1,10 +1,8 @@
 package com.bibliotecams.user.entity;
 
-import java.time.LocalDate;
-
 import com.bibliotecams.user.auditable.Auditable;
-
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "usuario")
@@ -46,8 +44,9 @@ public class Usuario extends Auditable {
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String dni, String nombre, String apellido, String email,
-                   String password, Rol rol, String estado, Boolean activo, LocalDate fechaRegistro) {
+    public Usuario(Integer idUsuario, String dni, String nombre, String apellido, 
+                   String email, String password, Rol rol, String estado, 
+                   Boolean activo, LocalDate fechaRegistro) {
         this.idUsuario = idUsuario;
         this.dni = dni;
         this.nombre = nombre;

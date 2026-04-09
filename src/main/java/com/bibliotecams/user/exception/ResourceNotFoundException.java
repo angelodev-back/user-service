@@ -1,8 +1,14 @@
 package com.bibliotecams.user.exception;
 
+// Para el no encontrado
+
 public class ResourceNotFoundException extends RuntimeException {
 
-    public ResourceNotFoundException(String message) {
+	public ResourceNotFoundException(String message) {
         super(message);
+    }
+
+    public ResourceNotFoundException(String resourceName, String fieldName, Object fieldValue) {
+        super(String.format("%s no encontrado con %s : '%s'", resourceName, fieldName, fieldValue));
     }
 }

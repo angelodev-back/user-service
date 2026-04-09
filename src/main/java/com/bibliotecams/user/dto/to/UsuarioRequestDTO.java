@@ -1,36 +1,48 @@
 package com.bibliotecams.user.dto.to;
 
+import com.bibliotecams.user.constants.AppConstants;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class UsuarioRequestDTO {
 
     @NotBlank(message = "El DNI es obligatorio")
-    @Size(min = 8, max = 8, message = "El DNI debe tener 8 dígitos")
+    @Pattern(regexp = AppConstants.REGEX_DNI, message = "El DNI debe contener exactamente 8 dígitos numéricos")
     private String dni;
 
     @NotBlank(message = "El nombre es obligatorio")
+    @Size(min = 2, max = 100, message = "El nombre debe tener entre 2 y 100 caracteres")
+    @Pattern(regexp = AppConstants.REGEX_SOLO_LETRAS, message = "El nombre solo debe contener letras y espacios")
     private String nombre;
 
     @NotBlank(message = "El apellido es obligatorio")
+    @Size(min = 2, max = 100, message = "El apellido debe tener entre 2 y 100 caracteres")
+    @Pattern(regexp = AppConstants.REGEX_SOLO_LETRAS, message = "El apellido solo debe contener letras y espacios")
     private String apellido;
 
     @NotBlank(message = "El email es obligatorio")
-    @Email(message = "El email no es válido")
+    @Email(message = "El email no tiene un formato válido")
+    @Pattern(regexp = AppConstants.REGEX_EMAIL, message = "El email no tiene un formato válido")
     private String email;
 
     @NotBlank(message = "La contraseña es obligatoria")
+    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     private String password;
 
     @NotNull(message = "El rol es obligatorio")
+    @Min(value = 1, message = "El ID del rol debe ser mayor a 0")
     private Integer idRol;
 
+    // Constructores
     public UsuarioRequestDTO() {
     }
 
-    public UsuarioRequestDTO(String dni, String nombre, String apellido, String email, String password, Integer idRol) {
+    public UsuarioRequestDTO(String dni, String nombre, String apellido, String email, 
+                             String password, Integer idRol) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -39,6 +51,7 @@ public class UsuarioRequestDTO {
         this.idRol = idRol;
     }
 
+    // Getters y Setters
     public String getDni() {
         return dni;
     }

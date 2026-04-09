@@ -1,10 +1,11 @@
 package com.bibliotecams.user.entity;
 
+import com.bibliotecams.user.auditable.Auditable;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "rol")
-public class Rol {
+public class Rol extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +16,7 @@ public class Rol {
     @Column(name = "nombre", unique = true, nullable = false, length = 30)
     private RolNombre nombre;
 
+    // Constructores
     public Rol() {
     }
 

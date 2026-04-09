@@ -16,9 +16,8 @@ public class UserServiceApplication {
     CommandLineRunner run() {
         return args -> {
             System.out.println("=====================================");
-            System.out.println("✅ USER-SERVICE EJECUTADO CON ÉXITO");
-            System.out.println("🌐 URL: http://localhost:8081");
-            System.out.println("📌 Endpoints: /api/v1/usuarios");
+            System.out.println("USER-SERVICE EJECUTADO CON ÉXITO");
+            System.out.println("URL: http://localhost:8081");
             System.out.println("=====================================");
         };
     }
