@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "rol")
 public class Rol extends Auditable {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rol")
     private Integer idRol;
@@ -16,9 +16,7 @@ public class Rol extends Auditable {
     @Column(name = "nombre", unique = true, nullable = false, length = 30)
     private RolNombre nombre;
 
-    // Constructores
-    public Rol() {
-    }
+    public Rol() {}
 
     public Rol(Integer idRol, RolNombre nombre) {
         this.idRol = idRol;

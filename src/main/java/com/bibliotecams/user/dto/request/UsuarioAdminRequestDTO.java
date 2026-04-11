@@ -1,4 +1,4 @@
-package com.bibliotecams.user.dto.to;
+package com.bibliotecams.user.dto.request;
 
 import com.bibliotecams.user.constants.AppConstants;
 import jakarta.validation.constraints.Email;
@@ -8,9 +8,13 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public class UsuarioRequestDTO {
+/**
+ * DTO para registro administrativo.
+ * INCLUYE idRol obligatorio - El admin elige el rol.
+ */
+public class UsuarioAdminRequestDTO {
 
-    @NotBlank(message = "El DNI es obligatorio")
+	@NotBlank(message = "El DNI es obligatorio")
     @Pattern(regexp = AppConstants.REGEX_DNI, message = "El DNI debe contener exactamente 8 dígitos numéricos")
     private String dni;
 
@@ -37,66 +41,53 @@ public class UsuarioRequestDTO {
     @Min(value = 1, message = "El ID del rol debe ser mayor a 0")
     private Integer idRol;
 
-    // Constructores
-    public UsuarioRequestDTO() {
-    }
+    public UsuarioAdminRequestDTO() {}
 
-    public UsuarioRequestDTO(String dni, String nombre, String apellido, String email, 
-                             String password, Integer idRol) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.password = password;
-        this.idRol = idRol;
-    }
+	public String getDni() {
+		return dni;
+	}
 
-    // Getters y Setters
-    public String getDni() {
-        return dni;
-    }
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getApellido() {
+		return apellido;
+	}
 
-    public String getApellido() {
-        return apellido;
-    }
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public Integer getIdRol() {
+		return idRol;
+	}
 
-    public Integer getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(Integer idRol) {
-        this.idRol = idRol;
-    }
+	public void setIdRol(Integer idRol) {
+		this.idRol = idRol;
+	}
 }

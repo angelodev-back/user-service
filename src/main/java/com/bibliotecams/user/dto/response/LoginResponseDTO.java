@@ -1,4 +1,4 @@
-package com.bibliotecams.user.dto.to;
+package com.bibliotecams.user.dto.response;
 
 public class LoginResponseDTO {
 	

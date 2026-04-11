@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Table(name = "usuario")
 public class Usuario extends Auditable {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
     private Integer idUsuario;
@@ -41,8 +41,7 @@ public class Usuario extends Auditable {
     @Column(name = "fecha_registro", nullable = false)
     private LocalDate fechaRegistro;
 
-    public Usuario() {
-    }
+    public Usuario() {}
 
     public Usuario(Integer idUsuario, String dni, String nombre, String apellido, 
                    String email, String password, Rol rol, String estado, 

@@ -1,41 +1,38 @@
-package com.bibliotecams.user.service;
+package com.bibliotecams.user.security;
 
-import java.util.Collections;
-
+import com.bibliotecams.user.entity.Usuario;
+import com.bibliotecams.user.repository.UsuarioBaseRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.bibliotecams.user.entity.Usuario;
-import com.bibliotecams.user.repository.UsuarioRepository;
+import java.util.Collections;
 
 @Service
-public class DetalleUsuarioService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UsuarioRepository usuarioRepository;
+    private final UsuarioBaseRepository usuarioRepository;
 
-    public DetalleUsuarioService(UsuarioRepository usuarioRepository) {
+    public UserDetailsServiceImpl(UsuarioBaseRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
         Usuario usuario = usuarioRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + email));
 
-        return new org.springframework.security.core.userdetails.User(
+        return new User(
                 usuario.getEmail(),
                 usuario.getPassword(),
                 usuario.getActivo(),
                 true,
                 true,
                 true,
-                Collections.singletonList(
-                        new SimpleGrantedAuthority("ROLE_" + usuario.getRol().getNombre().name())
-                )
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().getNombre()))
         );
     }
 }

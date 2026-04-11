@@ -1,41 +1,26 @@
-package com.bibliotecams.user.dto.to;
+package com.bibliotecams.user.dto.response;
 
 import java.time.LocalDate;
 
-public class UsuarioResponseDTO {
+public class UsuarioRegistroResponseDTO {
 
-    private Integer idUsuario;
-    private String dni;
+	private String dni;
     private String nombre;
     private String apellido;
     private String email;
     private String rol;
-    private String estado;
-    private Boolean activo;
     private LocalDate fechaRegistro;
 
-    public UsuarioResponseDTO() {
-    }
+    public UsuarioRegistroResponseDTO() {}
 
-    public UsuarioResponseDTO(Integer idUsuario, String dni, String nombre, String apellido, String email,
-                              String rol, String estado, Boolean activo, LocalDate fechaRegistro) {
-        this.idUsuario = idUsuario;
+    public UsuarioRegistroResponseDTO(String dni, String nombre, String apellido, String email,
+                              String rol, LocalDate fechaRegistro) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.rol = rol;
-        this.estado = estado;
-        this.activo = activo;
         this.fechaRegistro = fechaRegistro;
-    }
-
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getDni() {
@@ -76,22 +61,6 @@ public class UsuarioResponseDTO {
 
     public void setRol(String rol) {
         this.rol = rol;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public Boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
     }
 
     public LocalDate getFechaRegistro() {

@@ -1,7 +1,6 @@
 package com.bibliotecams.user.auditable;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 
@@ -20,8 +19,7 @@ public abstract class Auditable {
     @Column(name = "last_modified_date")
     private LocalDateTime lastModifiedDate;
 
-
-	public String getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
