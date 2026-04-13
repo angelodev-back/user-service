@@ -1,5 +1,7 @@
 package com.bibliotecams.user.dto.request;
 
+import com.bibliotecams.user.constants.AppConstants;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -8,15 +10,20 @@ import jakarta.validation.constraints.Size;
 public class UsuarioUpdateRequestDTO {
     
 	@NotBlank(message = "El nombre es obligatorio")
-    @Size(min = 2, max = 100, message = "El nombre debe tener entre 2 y 100 caracteres")
+    @Size(min = AppConstants.MIN_NOMBRE, max = AppConstants.MAX_NOMBRE, 
+          message = "El nombre debe tener entre " + AppConstants.MIN_NOMBRE + " y " + AppConstants.MAX_NOMBRE + " caracteres")
+    @Pattern(regexp = AppConstants.REGEX_SOLO_LETRAS, message = AppConstants.MSG_NOMBRE)
     private String nombre;
-    
+
     @NotBlank(message = "El apellido es obligatorio")
-    @Size(min = 2, max = 100, message = "El apellido debe tener entre 2 y 100 caracteres")
+    @Size(min = AppConstants.MIN_NOMBRE, max = AppConstants.MAX_NOMBRE, 
+          message = "El apellido debe tener entre " + AppConstants.MIN_NOMBRE + " y " + AppConstants.MAX_NOMBRE + " caracteres")
+    @Pattern(regexp = AppConstants.REGEX_SOLO_LETRAS, message = AppConstants.MSG_NOMBRE)
     private String apellido;
-    
+
     @NotBlank(message = "El email es obligatorio")
-    @Email(message = "El email no tiene un formato válido")
+    @Email(message = AppConstants.MSG_EMAIL)
+    @Pattern(regexp = AppConstants.REGEX_EMAIL, message = AppConstants.MSG_EMAIL)
     private String email;
     
     public UsuarioUpdateRequestDTO() {}

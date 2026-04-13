@@ -10,12 +10,13 @@ import jakarta.validation.constraints.Size;
 public class LoginRequestDTO {
 
 	@NotBlank(message = "El email es obligatorio")
-    @Email(message = "El email no tiene un formato válido")
-    @Pattern(regexp = AppConstants.REGEX_EMAIL, message = "El email no tiene un formato válido")
+    @Email(message = AppConstants.MSG_EMAIL)
+    @Pattern(regexp = AppConstants.REGEX_EMAIL, message = AppConstants.MSG_EMAIL)
     private String email;
 
     @NotBlank(message = "La contraseña es obligatoria")
-    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
+    @Size(min = AppConstants.MIN_PASSWORD, max = AppConstants.MAX_PASSWORD, 
+          message = AppConstants.MSG_PASSWORD)
     private String password;
 
     public LoginRequestDTO() {}

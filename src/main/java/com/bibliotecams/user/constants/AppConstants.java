@@ -7,10 +7,20 @@ public final class AppConstants {
     }
     
     public static final String REGEX_DNI = "^[0-9]{8}$";
+    public static final String MSG_DNI = "El DNI debe contener exactamente 8 dígitos numéricos";
+    
     public static final String REGEX_SOLO_LETRAS = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$";
+    public static final int MAX_NOMBRE = 50;
+    public static final int MIN_NOMBRE = 2;
+    public static final String MSG_NOMBRE = "El nombre solo debe contener letras y espacios (máximo " + MAX_NOMBRE + " caracteres)";
+    
     public static final String REGEX_EMAIL = "^[A-Za-z0-9._%+\\-]+@[A-Za-z0-9.\\-]+\\.[A-Za-z]{2,}$";
-    public static final String REGEX_PASSWORD = "^.{6,}$";
-
+    public static final String MSG_EMAIL = "El email debe tener un formato válido (ej: usuario@gmail.com)";
+    
+    public static final int MAX_PASSWORD = 50;
+    public static final int MIN_PASSWORD = 6;
+    public static final String MSG_PASSWORD = "La contraseña debe tener entre " + MIN_PASSWORD + " y " + MAX_PASSWORD + " caracteres";
+    
     public static final String ESTADO_ACTIVO = "ACTIVO";
     public static final String ESTADO_INACTIVO = "INACTIVO";
     public static final String ESTADO_SUSPENDIDO = "SUSPENDIDO";
